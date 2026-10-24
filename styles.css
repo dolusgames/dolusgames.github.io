@@ -1,0 +1,155 @@
+@font-face{
+  font-family:"Jersey 10";
+  src:url("fonts/jersey-10-latin-400-normal.woff2") format("woff2");
+  font-weight:400;font-style:normal;font-display:swap;
+}
+:root{
+  --encre:#2A2433;
+  --prune-gris:#6B6478;
+  --prune-nuit:#342335;
+  --prune-fonce:#241A2B;
+  --papier:#FBF4E6;
+  --papier-fonce:#F4EAD6;
+  --blanc:#FFFFFF;
+  --ligne:#E3D5BB;
+  --laiton:#E7B64B;
+  --laiton-clair:#F6DFA3;
+  --vert:#3D7A5A;
+  --rouge:#C2493F;
+  --gutter:clamp(16px,4vw,48px);
+  --measure:62ch;
+}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{
+  margin:0;background:var(--papier);color:var(--encre);
+  font-family:"Jersey 10",system-ui,sans-serif;
+  font-size:23px;line-height:1.3;
+}
+img{display:block;max-width:100%;height:auto;image-rendering:auto}
+a{color:var(--encre);text-decoration-thickness:2px;text-underline-offset:3px}
+a:hover{color:var(--vert)}
+a:focus-visible,button:focus-visible{outline:3px solid var(--laiton);outline-offset:3px}
+h1,h2,h3{font-weight:400;margin:0;line-height:1.05}
+h1{font-size:clamp(44px,7vw,84px)}
+h2{font-size:clamp(32px,4vw,44px);margin-bottom:18px}
+h3{font-size:27px;margin-bottom:6px}
+p{margin:0 0 .8em;max-width:var(--measure)}
+.muted{color:var(--prune-gris)}
+ul{max-width:var(--measure);padding-left:1.1em}
+
+/* buttons: charter — ink outline 2px, hard shadow 3px, pressed goes down 2px */
+.btn{
+  display:inline-flex;align-items:center;gap:10px;
+  min-height:48px;padding:6px 20px;border-radius:10px;
+  border:2px solid var(--encre);box-shadow:0 3px 0 var(--encre);
+  background:var(--laiton);color:var(--encre);text-decoration:none;
+  font-size:24px;line-height:1;cursor:pointer;
+}
+.btn:hover{color:var(--encre)}
+.btn:active{transform:translateY(2px);box-shadow:0 1px 0 var(--encre)}
+.btn.white{background:var(--blanc)}
+.btn.off{background:var(--papier-fonce);color:var(--prune-gris);box-shadow:none;border-color:var(--ligne);cursor:default}
+.btn.off:active{transform:none}
+.badge{
+  display:inline-block;padding:2px 10px;border-radius:6px;
+  font-size:19px;line-height:1.3;vertical-align:middle;
+}
+.badge.red{background:var(--rouge);color:var(--blanc)}
+.badge.brass{background:var(--laiton-clair);color:var(--encre)}
+.badge.green{background:#D9EBDF;color:var(--encre)}
+
+/* top bar — prune foncé like the game's top bar */
+.top{
+  background:var(--prune-fonce);color:var(--papier);
+  padding:14px var(--gutter);
+  display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap;
+}
+.brand{display:flex;align-items:center;gap:12px;color:var(--papier);text-decoration:none;font-size:30px;line-height:1}
+.brand img{width:40px;height:40px;border-radius:8px;border:2px solid var(--encre)}
+.nav{display:flex;gap:6px;flex-wrap:wrap}
+.nav a{color:var(--papier);text-decoration:none;font-size:23px;padding:8px 12px;border-radius:8px}
+.nav a:hover{background:var(--prune-nuit);color:var(--papier)}
+.nav a[aria-current="page"]{background:var(--laiton);color:var(--encre)}
+
+/* hero on the scene background */
+.hero{background:var(--prune-nuit);color:var(--papier);position:relative;overflow:hidden}
+.hero-art{width:100%;aspect-ratio:21/9;object-fit:cover;display:block}
+@media (max-width:700px){.hero-art{aspect-ratio:4/3;object-position:72% 50%}}
+.hero-copy{
+  padding:34px var(--gutter) 44px;
+  display:grid;gap:14px;max-width:1100px;
+}
+.hero-copy h1{color:var(--papier);text-shadow:0 3px 0 var(--encre)}
+.hero-copy p{color:var(--papier);font-size:27px;line-height:1.25;max-width:56ch}
+.stores{display:flex;gap:14px;flex-wrap:wrap;margin-top:8px}
+
+/* sections */
+main{padding:0 var(--gutter)}
+section{padding:52px 0;border-top:2px solid var(--ligne);max-width:1100px}
+section:first-of-type{border-top:0}
+.split{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.2fr);gap:40px;align-items:center}
+.split .art{border:2px solid var(--encre);border-radius:12px;overflow:hidden;background:var(--prune-nuit);box-shadow:0 3px 0 var(--encre)}
+@media (max-width:760px){.split{grid-template-columns:1fr}.split .art{max-width:380px}}
+
+/* cards — flat white, light outline (not clickable) */
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:18px}
+.card{
+  background:var(--blanc);border:2px solid var(--ligne);border-radius:12px;padding:18px 18px 14px;
+}
+.card img{width:72px;height:72px;margin-bottom:8px}
+.card p{font-size:22px;color:var(--prune-gris);margin:0}
+
+/* window — paper, ink outline, coloured title band (like a game popup) */
+.win{
+  background:var(--papier);border:2px solid var(--encre);border-radius:12px;overflow:hidden;
+  max-width:720px;box-shadow:0 3px 0 var(--encre);
+}
+.win .band{background:var(--vert);color:var(--blanc);padding:8px 16px;font-size:24px}
+.win .band.brass{background:var(--laiton);color:var(--encre)}
+.win .band.red{background:var(--rouge)}
+.win .body{padding:16px}
+.win .body p:last-child{margin-bottom:0}
+
+/* timeline with event vignettes */
+.eras{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:18px}
+.era{background:var(--blanc);border:2px solid var(--ligne);border-radius:12px;overflow:hidden}
+.era img{width:100%;aspect-ratio:4/3;object-fit:cover;border-bottom:2px solid var(--ligne)}
+.era div{padding:12px 14px 14px}
+.era span{display:block;color:var(--vert);font-size:26px;line-height:1}
+.era p{font-size:21px;color:var(--prune-gris);margin:6px 0 0}
+
+/* team portraits */
+.team{display:flex;gap:14px;flex-wrap:wrap}
+.who{text-align:center;width:120px}
+.who img{width:112px;height:112px;border-radius:12px;border:2px solid var(--encre);background:var(--papier-fonce);box-shadow:0 3px 0 var(--encre);margin:0 auto 6px}
+.who span{display:block;font-size:21px;line-height:1.1}
+.who small{display:block;font-size:18px;color:var(--prune-gris)}
+
+/* gazette */
+.gazette{
+  background:var(--blanc);border:2px solid var(--ligne);border-radius:12px;padding:18px 22px;max-width:var(--measure);
+}
+.gazette .mast{font-size:30px;border-bottom:4px double var(--encre);padding-bottom:6px;margin-bottom:10px}
+.gazette p{margin:0;font-size:24px}
+
+/* legal pages */
+.doc{max-width:var(--measure);padding:40px 0 20px}
+.doc h1{font-size:clamp(40px,6vw,64px);margin-bottom:12px}
+.doc h2{font-size:32px;margin:30px 0 8px}
+.doc p,.doc li{font-size:23px}
+.doc table{border-collapse:collapse;width:100%;margin:0 0 1em}
+.doc th,.doc td{text-align:left;vertical-align:top;padding:7px 12px 7px 0;border-bottom:2px solid var(--ligne);font-size:22px}
+.doc th{white-space:nowrap;color:var(--prune-gris);font-weight:400}
+.lang{display:flex;gap:8px;margin-bottom:18px}
+.lang a{text-decoration:none;padding:6px 12px;border-radius:8px;border:2px solid var(--ligne);background:var(--blanc);font-size:21px}
+.lang a[aria-current="true"]{background:var(--laiton);border-color:var(--encre)}
+
+/* footer — bottom bar */
+footer{
+  margin-top:40px;background:var(--prune-fonce);color:var(--papier);
+  padding:30px var(--gutter) 36px;font-size:21px;line-height:1.3;
+}
+footer a{color:var(--papier)}
+footer .cols{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:22px;max-width:1100px}
+footer p{margin:0 0 .35em}
